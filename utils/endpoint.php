@@ -15,6 +15,9 @@ function getError($code): array {
 }
 
 function beginEndpoint(): bool {
+    // Slow down bruteforce attacks
+    usleep(100_000); // 100ms = 0.1s
+
     // Get the database connection details from the environment variable
     $mysqlHost = getenv('MYSQL_CONTAINER');
     $mysqlDatabase = getenv('MYSQL_DATABASE');
