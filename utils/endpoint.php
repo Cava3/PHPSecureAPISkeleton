@@ -3,7 +3,11 @@
 $GLOBALS["ERROR_CODES"] = array(
     600 => "SID not found",
     601 => "SID is outdated",
-    602 => "SID not provided"
+    602 => "SID not provided",
+    603 => "Username or password incorrect",
+    604 => "Username already exists",
+    605 => "Every field must be filled",
+    606 => "Incorrect email"
 );
 
 function getError($code): array {
