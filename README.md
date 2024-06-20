@@ -5,6 +5,9 @@ Allows for simple server sided API creation with a secure session and account cr
 **Be careful, this skeleton does not ensure the content you add to it is secure.**  
 **Please ensure you use correctly the functions that are provided here AND your own code is """safe""".**
 
+# Everything is WIP !
+# Do not use now !
+
 ---
 ## How to use
 1. Download the zip file (or remove the .git folder after cloning)
