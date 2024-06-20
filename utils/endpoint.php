@@ -6,7 +6,8 @@ $GLOBALS["ERROR_CODES"] = array(
     602 => "SID not provided",
     603 => "Username or password incorrect",
     604 => "Every field must be filled",
-    605 => "Incorrect email"
+    605 => "Incorrect email",
+    606 => "Account already exists"
 );
 
 function sendError($code){
