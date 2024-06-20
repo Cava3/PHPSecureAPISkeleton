@@ -9,8 +9,10 @@ $GLOBALS["ERROR_CODES"] = array(
     605 => "Incorrect email"
 );
 
-function getError($code): array {
-    return array("error" => $code, "message" => $GLOBALS["ERROR_CODES"][$code]);
+function sendError($code){
+    header("HTTP/1.0 $code Not Found");
+    echo json_encode(array("error" => $code, "message" => $GLOBALS["ERROR_CODES"][$code]));
+    exit;
 }
 
 function beginEndpoint(): bool {
@@ -26,8 +28,7 @@ function beginEndpoint(): bool {
     // Check if the SID is provided
     if (!isset($_GET['sid'])) {
         header("Content-Type: application/json");
-        echo json_encode(getError(602));
-        return false;
+        sendError(602);
     }
 
     $SID = $_GET['sid'];
@@ -45,8 +46,7 @@ function beginEndpoint(): bool {
     $result = $statement->fetch(PDO::FETCH_ASSOC);
     if (!$result) {
         header("Content-Type: application/json");
-        echo json_encode(getError(600));
-        return false;
+        sendError(600);
     }
 
     $lastSeen = $result[0]['last_seen'];
@@ -54,8 +54,7 @@ function beginEndpoint(): bool {
 
     if ($currentTime - $lastSeen > 3600) {
         header("Content-Type: application/json");
-        echo json_encode(getError(601));
-        return false;
+        sendError(601);
     }
 
     // Update the last seen time
