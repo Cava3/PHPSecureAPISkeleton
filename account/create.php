@@ -69,5 +69,7 @@ $statement->execute();
 
 // Return the SID
 header("Content-Type: application/json");
-echo json_encode(array("sid" => $SID));
+echo json_encode([
+    "sid" => $SID
+]);
 exit;
