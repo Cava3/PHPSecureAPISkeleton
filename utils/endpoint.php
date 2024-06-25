@@ -11,7 +11,7 @@ $GLOBALS["ERROR_CODES"] = array(
 );
 
 function sendError($code){
-    header("HTTP/1.0 $code Not Found");
+    header("HTTP/1.0 $code Error");
     echo json_encode(array("error" => $code, "message" => $GLOBALS["ERROR_CODES"][$code]));
     exit;
 }
@@ -71,6 +71,3 @@ function beginEndpoint(): bool {
     $connection = null;
     return true;
 }
-
-// TODO: Clean
-beginEndpoint();
