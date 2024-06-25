@@ -7,7 +7,8 @@ $GLOBALS["ERROR_CODES"] = array(
     603 => "Username or password incorrect",
     604 => "Every field must be filled",
     605 => "Incorrect email",
-    606 => "Account already exists, please connect."
+    606 => "Account already exists, please connect",
+    607 => "No account corresponding to sent data",
 );
 
 function sendError($code){
