@@ -7,7 +7,7 @@ $GLOBALS["ERROR_CODES"] = array(
     603 => "Username or password incorrect",
     604 => "Every field must be filled",
     605 => "Incorrect email",
-    606 => "Account already exists"
+    606 => "Account already exists, please connect."
 );
 
 function sendError($code){
@@ -27,12 +27,12 @@ function beginEndpoint(): bool {
     $mysqlPassword = getenv('MYSQL_PASSWORD');
 
     // Check if the SID is provided
-    if (!isset($_GET['sid'])) {
+    if (!isset($_POST['sid'])) {
         header("Content-Type: application/json");
         sendError(602);
     }
 
-    $SID = $_GET['sid'];
+    $SID = $_POST['sid'];
 
     // Create a new PDO instance
     $fullURI = "mysql:host=$mysqlHost;dbname=$mysqlDatabase";
