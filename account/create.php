@@ -1,5 +1,14 @@
 <?php
 
+// Check if username and password are provided
+if (!isset($_POST['username']) || !isset($_POST['password']) || !isset($_POST['email'])) {
+    sendError(604);
+}
+
+$username = $_POST['username'];
+$password = $_POST['password'];
+$email = $_POST['email'];
+
 // Get the database connection details from the environment variable
 $mysqlHost = getenv('MYSQL_CONTAINER');
 $mysqlDatabase = getenv('MYSQL_DATABASE');
@@ -9,14 +18,6 @@ $mysqlPassword = getenv('MYSQL_PASSWORD');
 // Create a new PDO instance
 $fullURI = "mysql:host=$mysqlHost;dbname=$mysqlDatabase";
 $connection = new PDO($fullURI, $mysqlUsername, $mysqlPassword);
-
-// Check if username and password are provided
-if (!isset($_POST['username']) || !isset($_POST['password']) || !isset($_POST['email'])) {
-    sendError(604);
-}
-
-$username = $_POST['username'];
-$password = $_POST['password'];
 
 // Derivate a salt from the username
 $salt = substr(hash('sha256', $username), 0, 6);
@@ -58,7 +59,7 @@ $statement->bindParam(':username', $username);
 $statement->bindParam(':passwd', $hashedPassword);
 $statement->bindParam(':sid', $SID);
 $statement->bindParam(':salt', $salt);
-$statement->bindParam(':email', $_POST['email']);
+$statement->bindParam(':email', $email);
 $statement->execute();
 
 // Return the SID
