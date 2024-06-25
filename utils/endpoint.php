@@ -11,12 +11,24 @@ $GLOBALS["ERROR_CODES"] = array(
     607 => "No account corresponding to sent data",
 );
 
+/**
+ * Send an error message to the client and exits.
+ * 
+ * @param int $code The error code to send. List of codes is in the $GLOBALS["ERROR_CODES"] array.
+ */
 function sendError($code){
     header("HTTP/1.0 $code Error");
     echo json_encode(array("error" => $code, "message" => $GLOBALS["ERROR_CODES"][$code]));
     exit;
 }
 
+/**
+ * Begin the endpoint.
+ * Should be called by every endpoint except for account creation and session connection.
+ * 
+ * @return bool True if the endpoint can continue.
+ * @throws Exception Just exits the script if the SID is not provided.
+ */
 function beginEndpoint(): bool {
     // Slow down bruteforce attacks
     usleep(100_000); // 100ms = 0.1s
