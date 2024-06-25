@@ -1,5 +1,10 @@
 <?php
 
+// ==== Begin of the endpoint ====
+$root = realpath($_SERVER["DOCUMENT_ROOT"]);
+$api = realpath("$root/" . getenv('API_PATH'));
+require_once "$api/endpoint.php";
+
 // Check if username and password are provided
 if (!isset($_POST['username']) || !isset($_POST['password']) || !isset($_POST['email'])) {
     sendError(604);
