@@ -4,11 +4,11 @@ $GLOBALS["ERROR_CODES"] = array(
     600 => "SID not found",
     601 => "SID is outdated",
     602 => "SID not provided",
-    603 => "Username or password incorrect",
+    603 => "Username or password incorrect",         // Session connection only
     604 => "Every field must be filled",
     605 => "Incorrect email",
     606 => "Account already exists, please connect",
-    607 => "No account corresponding to sent data",
+    607 => "No account corresponding to sent data",  // Account deletion only
 );
 
 /**
