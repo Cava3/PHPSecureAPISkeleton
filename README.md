@@ -24,7 +24,6 @@ Allows for simple server sided API creation with a secure session and account cr
   - Newer session invalidates older session, to allow user to disconnect a potential SID hijacker
   - Invalidates session after 1 hour of inactivity, to prevent long term hijacking (again common Discord issue)
   - *Remember to call the `beginEndpoint()` function in your endpoints as it also updates the SID invalidation time*
-  <!-- TODO -->
 - **Hashing and Salting**: Passwords are hashed and salted server-side.
   - Hashing forces hacker to brute force the password in case of a data leak
   - Salting forces the hacker to start from scratch for each password, and prevents the use of rainbow tables
@@ -37,7 +36,6 @@ Allows for simple server sided API creation with a secure session and account cr
 - **Error Handling**: Errors are handled in a way that does not leak information.
   - All custom errors are returned as a HTTP 6xx error in json format
   - The error message is not detailed to prevent information leaks (unlike "password incorrect" or "username already taken")
-<!-- TODO -->
 - **Account Creation/Connection**: Account creation is secured.
   - Username and password are checked for length and characters
-  - Username and passwords are non-unique, but the combination of both is (allows to remove the "username already taken" error message, which is a security leak)
+  - Username and passwords are non-unique, but the combination of both is (allows to remove the "username already taken" error message, which is an info leak + allows for multiple accounts with the same username)
