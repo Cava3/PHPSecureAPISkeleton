@@ -25,7 +25,7 @@ $fullURI = "mysql:host=$mysqlHost;dbname=$mysqlDatabase";
 $connection = new PDO($fullURI, $mysqlUsername, $mysqlPassword);
 
 // Derivate a salt from the username
-$salt = substr(hash('sha256', $username), 0, 6);
+$salt = substr(hash('sha256', $username), 0, 10);
 
 // Hash the password
 $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
