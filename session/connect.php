@@ -39,7 +39,7 @@ $salt = $result[0]['salt'];
 // Hash the password
 $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
-// Get the user's SID
+// Get the user's ID
 $query = "SELECT id FROM user WHERE username = :username AND passwd = :passwd";
 $statement = $connection->prepare($query);
 $statement->bindParam(':username', $username);
