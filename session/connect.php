@@ -69,7 +69,7 @@ do {
 } while ($SIDresult || strlen($SID) != 64);
 
 // Update the user's SID
-$query = "UPDATE user SET sid = :sid WHERE id = :id";
+$query = "UPDATE user SET sid = :sid, last_seen = NOW() WHERE id = :id";
 $statement = $connection->prepare($query);
 $statement->bindParam(':sid', $SID);
 $statement->bindParam(':id', $userId);
