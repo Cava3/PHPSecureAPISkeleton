@@ -19,7 +19,7 @@ $mysqlPassword = getenv('MYSQL_PASSWORD');
 $fullURI = "mysql:host=$mysqlHost;dbname=$mysqlDatabase";
 $connection = new PDO($fullURI, $mysqlUsername, $mysqlPassword);
 
-// Delete the user from the database
+// Delete the user's SID from the database
 $query = "UPDATE user SET sid = NULL, last_seen = '1970-01-01 00:00:00' WHERE sid = :sid";
 $statement = $connection->prepare($query);
 $statement->bindParam(':sid', $SID);
