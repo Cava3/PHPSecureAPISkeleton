@@ -1,7 +1,4 @@
 <?php
-
-// TODO: Rate limiting
-
 if(!isset($_GET["api_test_key"]) || $_GET["api_test_key"] !== getenv("API_TEST_KEY")){
     header("HTTP/1.0 403 Forbidden");
     echo "You are not allowed to access this page.";
