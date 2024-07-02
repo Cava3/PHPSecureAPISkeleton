@@ -33,11 +33,7 @@ Allows for simple server sided API creation with a secure session and account cr
 - **Rate Limiting**: A rate limit is set on the API to prevent brute forcing.
   - 5 login/register requests per minute per IP
   - 5 other requests per second per IP
-- **Confidentiality first**: Accounts and errors are handled with confidentiality in mind.
-  - Possibility for multiple accounts with the same username to prevent information leaks (like "password incorrect" or "username already taken"). See Sherlock on GitHub for an example of how this can be exploited.
-  - No tracking of the user's IP, only uses the session ID (SID). Nothing stored serverside as you have to pass it to each call.
-  - Errors are as generic as possible to prevent information leaks, while still being useful for the client application.
 - **Account Creation/Connection**: Account creation is secured.
 <!-- TODO -->
-  - Username and password are checked for length and characters
-  - Username and passwords are non-unique, but the combination of both is (allows to remove the "username already taken" error message, which is an info leak + allows for multiple accounts with the same username)
+  - Username and password are checked for length and content
+  - Username and passwords are non-unique, but the combination of both is. Itallows to remove the "username already taken" error message, which is an info leak + allows for multiple accounts with the same username. See Sherlock on GitHub for an example of how it could be exploited for tracking purposes.
