@@ -31,7 +31,7 @@ Allows for simple server sided API creation with a secure session and account cr
   - *It is recommended to also salt and hash client-side using the username (or a derived value) to prevent MITM attacks*
 <!-- TODO -->
 - **Rate Limiting**: A rate limit is set on the API to prevent brute forcing.
-  - 5 login/register requests per minute per IP
+  - 3 login/register requests per minute per IP
   - 5 other requests per second per IP
 - **Account Creation/Connection**: Account creation is secured.
 <!-- TODO -->
